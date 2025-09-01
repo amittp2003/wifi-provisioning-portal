@@ -1,0 +1,124 @@
+:root {
+  /* Primary color system - Updated to deep blue (#2B4FB8) */
+  --primary-60: #2B4FB8;
+  --primary-700: #2545a0;
+  --primary-800: #1f3b88;
+  
+  /* Gray color system */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-900: #374151;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.9);
+  --text-dark: #374151;
+  --text-light: #6b7280;
+  --text-muted: #e5e7eb;
+  
+  /* Background colors */
+  --background-primary: linear-gradient(135deg, #2B4FB8 0%, #2876f5 100%);
+  --background-card: #ffffff;
+  --background-light: #f9fafb;
+  
+  /* Success, warning, error colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* Gradient definitions */
+  --gradient-blue: linear-gradient(90deg, var(--primary-800) 0%, var(--primary-600) 100%);
+  --gradient-purple: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-green: linear-gradient(90deg, #059669 0%, #10b981 100%);
+  --gradient-red: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+  
+  /* Spacing - 24px grid spacing as specified */
+  --spacing-xs: 0.25rem;    /* 4px */
+  
+  /* Additional custom properties */
+  --primary-blue: #2B4FB8;
+  --primary-blue-dark: #1f3b8;
+  --primary-blue-light: #3b82f6;
+  --background-gradient: linear-gradient(135deg, #2B4FB8 0%, #3b82f6 100%);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
+  --border-radius-lg: 12px;
+  --header-height: 70px;
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 0.75rem;    /* 12px */
+  --spacing-lg: 1rem;       /* 16px */
+  --spacing-xl: 1.5rem;     /* 24px */
+  --spacing-2xl: 2rem;      /* 32px */
+  --spacing-3xl: 3rem;      /* 48px */
+  
+  /* Border radius - 12px card border-radius as specified */
+  --radius-sm: 0.25rem;     /* 4px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;        /* 16px */
+  --radius-2xl: 1.5rem;     /* 24px */
+  --radius-3xl: 2rem;       /* 32px */
+  
+  /* Shadows - as specified */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0.06);
+  
+  /* Typography - SF Pro Display/Segoe UI with precise hierarchy */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Font sizes */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+ --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Line heights */
+  --line-height-heading: 1.4;
+  --line-height-body: 1.6;
+  
+  /* Letter spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  
+  /* Transitions - 0.2s ease for micro-interactions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.2s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* Breakpoints - responsive breakpoints as specified */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}

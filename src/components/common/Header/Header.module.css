@@ -1,0 +1,527 @@
+.header {
+  background: var(--primary-blue);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  transition: all 0.3s ease;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 1rem;
+}
+
+/* When not authenticated (login page), center the title more */
+.headerContainer:not(.authenticated) {
+  justify-content: center;
+}
+
+.headerContainer:not(.authenticated) .centerSection {
+  flex: 2;
+}
+
+/* When authenticated, ensure proper spacing */
+.headerContainer.authenticated {
+  justify-content: space-between;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.centerSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  min-width: 0;
+  /* Allow title to truncate if needed */
+  overflow: hidden;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 0.9;
+}
+
+.jioLogo {
+  height: 50px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.brand:hover .jioLogo {
+  transform: scale(1.03);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  margin: 0;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.userMenuButton {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.userMenuButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.userMenuButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.userName {
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.dropdownIcon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--text-primary);
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.userMenuButton[aria-expanded="true"] .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+.userMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 180px;
+  animation: fadeIn 0.2s ease;
+  z-index: var(--z-dropdown);
+}
+
+.menuItem {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-sm);
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: var(--primary-60);
+  color: white;
+}
+
+.mobileMenuButton {
+ display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  z-index: calc(var(--z-dropdown) + 1);
+}
+
+.mobileMenuButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mobileMenuButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mobileMenuButton[aria-expanded="true"] .hamburger:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobileMenuButton[aria-expanded="true"] .hamburger:nth-child(2) {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.mobileMenuButton[aria-expanded="true"] .hamburger:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.hamburger {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background: white;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 0.25rem;
+  animation: fadeIn 0.3s ease;
+  z-index: var(--z-dropdown);
+  display: none;
+  overflow: hidden;
+}
+
+.mobileUserInfo {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.mobileUserName {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.mobileUserEmail {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobileMenuItem {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.mobileMenuItem:last-child {
+  border-bottom: none;
+}
+
+.mobileMenuItem:hover {
+  background: var(--primary-60);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Enhanced transitions */
+.header {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.userMenuButton {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jioLogo {
+ transition: transform 0.2s cubic-bezier(0.4, 0.2, 1);
+}
+
+.dropdownIcon {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobileMenuButton {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.userMenu {
+  animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mobileMenu {
+  animation: fadeInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.menuItem {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobileMenuItem {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+  .headerContainer {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .jioLogo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 992px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .jioLogo {
+    height: 40px;
+  }
+  
+  .userName {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 60px;
+  }
+  
+  .headerContainer {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .jioLogo {
+    height: 35px;
+  }
+  
+  .userMenuButton {
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-sm);
+  }
+  
+  .userName {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    height: 50px;
+  }
+  
+  .headerContainer {
+    padding: 0 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .centerSection {
+    padding: 0 0.5rem;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .title {
+    font-size: 1rem;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 0.25rem;
+    line-height: 1.3;
+  }
+  
+  .jioLogo {
+    height: 30px;
+  }
+  
+  .userSection {
+    display: none;
+  }
+  
+  .mobileMenuButton {
+    display: flex;
+  }
+  
+  .mobileMenu {
+    display: block;
+  }
+  
+  .mobileUserInfo {
+    padding: 0.75rem 1rem;
+  }
+  
+  .mobileMenuItem {
+    padding: 0.75rem 1rem;
+  }
+  
+  .userName {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer {
+    padding: 0 0.5rem;
+    gap: 0.25rem;
+  }
+  
+  .title {
+    font-size: 0.9rem;
+    padding: 0.1rem;
+  }
+  
+  .jioLogo {
+    height: 25px;
+  }
+  
+  .mobileMenuButton {
+    padding: 0.15rem 0.3rem;
+  }
+  
+  .hamburger {
+    width: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .headerContainer {
+    padding: 0 0.25rem;
+    gap: 0.1rem;
+  }
+  
+  .title {
+    font-size: 0.8rem;
+  }
+  
+  .jioLogo {
+    height: 22px;
+  }
+  
+  .userName {
+    max-width: 80px;
+    font-size: 0.7rem;
+  }
+  
+  .mobileMenuButton {
+    padding: 0.1rem 0.2rem;
+ }
+  
+  .hamburger {
+    width: 16px;
+    height: 1.5px;
+  }
+}

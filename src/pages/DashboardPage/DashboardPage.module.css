@@ -1,0 +1,261 @@
+.dashboardPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-gradient);
+  font-family: var(--font-family-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.mainContent {
+  flex: 1;
+  padding: 110px 20px 60px 20px; /* Increased top padding to clear header */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Make content area scrollable */
+  align-items: center; /* Center-align content */
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 1100px; /* Reduced max-width */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Component stacking order - Top to Bottom */
+.uploadSection {
+  width: 100%;
+  height: auto;
+  min-height: 240px; 
+  margin-bottom: 20px; 
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.uploadSection:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.statusIndicators {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px; 
+  display: flex;
+  gap: 24px;
+}
+
+.indicatorCard {
+  flex: 1;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+}
+
+.indicatorCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.resultsTable {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  max-height: 350px; 
+  margin-bottom: 32px;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultsTable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.historySection {
+  width: 100%;
+  height: auto;
+  min-height: 160px;
+  margin-bottom: 20px; 
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.historySection:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.activityLog {
+  width: 100%;
+  height: auto;
+  min-height: 80px; 
+  margin-bottom: 32px; 
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.activityLog:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Footer */
+.pageFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.footerText {
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Desktop (≥992px) */
+@media (min-width: 992px) {
+  .statusIndicators {
+    flex-direction: row;
+  }
+  
+  .indicatorCard {
+    flex: 1;
+  }
+}
+
+/* Tablet (768px-991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .mainContent {
+    padding: 100px 16px 60px 16px; /* Increased top padding to clear header */
+  }
+  
+  .contentContainer {
+    padding: 0 16px;
+  }
+  
+  .statusIndicators {
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  .indicatorCard {
+    padding: 12px;
+  }
+  
+  .uploadSection,
+  .resultsTable,
+  .historySection,
+  .activityLog {
+    margin-bottom: 16px;
+  }
+  
+  .activityLog {
+    margin-bottom: 40px;
+  }
+}
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+  .mainContent {
+    padding: 90px 16px 60px 16px; /* Increased top padding to clear header */
+  }
+  
+  .contentContainer {
+    padding: 0 16px;
+  }
+  
+  .statusIndicators {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+  
+  .indicatorCard {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .uploadSection,
+  .resultsTable,
+  .historySection,
+  .activityLog {
+    margin-bottom: 16px;
+  }
+  
+  .activityLog {
+    margin-bottom: 40px;
+  }
+  
+  .footerContainer {
+    padding: 0 16px;
+  }
+  
+  .footerText {
+    font-size: var(--font-size-xs);
+  }
+}
+/* Small Mobile */
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 55px 12px 60px 12px; /* Reduced top padding to maintain consistency */
+  }
+  
+  .contentContainer {
+    padding: 0 12px;
+  }
+  
+  .footerContainer {
+    padding: 0 12px;
+  }
+  
+  .footerText {
+    font-size: 10px;
+  }
+}
