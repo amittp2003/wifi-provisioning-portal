@@ -24,8 +24,51 @@ Before you begin, ensure you have the following installed on your system:
 ### Installing Redis
 
 #### Windows:
-1. Download Redis for Windows from [Redis official website](https://redis.io/download/) or use WSL (Windows Subsystem for Linux)
-2. Follow the installation instructions for your preferred method
+
+**Method 1: Using Windows Subsystem for Linux (WSL) - Recommended**
+
+This is the most reliable method for running Redis on Windows:
+
+1. **Install WSL** (if not already installed):
+   - Open PowerShell as Administrator
+   - Run: `wsl --install`
+   - Restart your computer if prompted
+
+2. **Install Ubuntu** (or another Linux distribution):
+   - Open Microsoft Store
+   - Search for "Ubuntu" and install it
+   - Launch Ubuntu from the Start menu and complete the setup
+
+3. **Install Redis in WSL**:
+   - Open Ubuntu terminal
+   - Update package list: `sudo apt update`
+   - Install Redis: `sudo apt install redis-server`
+
+4. **Start Redis server**:
+   - Start Redis service: `sudo service redis-server start`
+   - Check if it's running: `redis-cli ping` (should return "PONG")
+
+**Method 2: Using Docker (Alternative)**
+
+If you prefer using Docker:
+
+1. **Install Docker Desktop**:
+   - Download from https://www.docker.com/products/docker-desktop
+   - Install and launch Docker Desktop
+
+2. **Run Redis container**:
+   - Open Command Prompt or PowerShell
+   - Run: `docker run -d -p 6379:6379 redis`
+
+**Method 3: Using Redis Windows Port (Less Recommended)**
+
+There's an unofficial Windows port of Redis, but it's not actively maintained:
+
+1. Download Redis for Windows from: https://github.com/microsoftarchive/redis/releases
+2. Extract to a folder (e.g., `C:\redis`)
+3. Open Command Prompt as Administrator
+4. Navigate to the Redis folder: `cd C:\redis`
+5. Start Redis server: `redis-server.exe redis.windows.conf`
 
 #### macOS:
 1. Using Homebrew:
